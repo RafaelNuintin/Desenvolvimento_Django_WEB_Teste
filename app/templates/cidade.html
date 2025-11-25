@@ -60,29 +60,19 @@ href="/admin/">Administração</a>
 </div>
 </nav>
 <div class="container mt-5">
-<h2 class="mb-4">Tabela de Livros</h2>
+<h2 class="mb-4">Tabela de Cidades</h2>
 <table class="table">
 <thead>
 <tr>
 <th scope="col">Nome</th>
-<th scope="col">Autor</th>
-<th scope="col">Editora</th>
-<th scope="col">Gênero</th>
-<th scope="col">Preço</th>
-<th scope="col">Data Publicação</th>
-<th scope="col">Status</th>
+<th scope="col">Uf</th>
 </tr>
 </thead>
 <tbody>
-{% for livros in livros %}
+{% for cidades in cidades %}
 <tr>
-<td>{{ livros.nome }}</td>
-<td>{{ livros.autor }}</td>
-<td>{{ livros.editora }}</td>
-<td>{{ livros.genero }} </td>
-<td>{{ livros.preco }}</td>
-<td>{{ livros.data_plub }}</td>
-<td>{{ livros.status }}</td>
+<td>{{ cidades.nome }}</td>
+<td>{{ cidades.uf }}</td>
 </tr>
 {% endfor %}
 </tbody>
