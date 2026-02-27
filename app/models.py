@@ -71,3 +71,21 @@ verbose_name="Gênero do livro")
     class Meta:
         verbose_name = "Livro"
         verbose_name_plural = "Livros"
+
+class Emprestimo(models.Model):
+    STATUS_CHOICES = (
+        (True, 'Ativo'),
+        (False, 'Devolvido'),
+    )
+    leitor = models.ForeignKey(Leitor, on_delete = models.CASCADE, verbose_name = "Nome do leitor")
+    livro = models.ForeignKey(Livro, on_delete = models.CASCADE, verbose_name = "Nome do livro")
+    data_emprestimo = models.DateField(verbose_name = "Data de empréstimo")
+    data_devolucao = models.DateField(verbose_name = "Data de devolução")
+    status = models.BooleanField(choices = STATUS_CHOICES, default = True, verbose_name = "Status do empréstimo")
+
+    def __str__(self):
+        return f'{self.livro} - {self.leitor}'
+    class Meta:
+        verbose_name = "Empréstimo"
+        verbose_name_plural = "Empréstimos"
+

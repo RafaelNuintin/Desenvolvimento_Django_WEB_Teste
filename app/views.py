@@ -6,7 +6,8 @@ from django.views.generic import TemplateView
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
+        livros = Livro.objects.all()
+        return render(request, 'index.html', {'livros': livros})
     def post(self, request):
         pass
 class LivrosView(View):
@@ -16,8 +17,8 @@ class LivrosView(View):
 # def post(self, request, *args, **kwargs):
 class EmprestimoView(View):
     def get(self, request, *args, **kwargs):
-        reservas = Emprestimo.objects.all()
-        return render(request, 'reserva.html', {'reservas': reservas})
+        emprestimos = Emprestimo.objects.all()
+        return render(request, 'emprestimo.html', {'emprestimos': emprestimos})
 class CidadesView(View):
     def get(self, request, *args, **kwargs):
         cidades = Cidade.objects.all()
