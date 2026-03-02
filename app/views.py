@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import *
+from .models import Livro, Autor, Editora, Genero, Cidade, Leitor, Emprestimo
+from .forms import LivroForm
 from django.views import View
 from django.contrib import messages
-from django.views.generic import TemplateView
+from django.views.generic import UpdateView
+from django.urls import reverse_lazy
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
@@ -44,21 +46,14 @@ class DeleteLivroView(View):
         livro = Livro.objects.get(id=id)
         livro.delete()
         messages.success(request, 'Livro excluído com sucesso!') # Success message
-        return redirect('livros')
-class EditarLivroView(View):
+        return redirect('index')
+class EditarLivroView(UpdateView):
+    model = Livro
+    form_class = LivroForm
     template_name = 'editar_livro.html'
+    context_object_name = 'livro'
+    pk_url_kwarg = 'id'
 
-    def get(self, request, id, *args, **kwargs):
-        livro = get_object_or_404(Livro, id=id)
-        form = LivroForm(instance=livro)
-        return render(request, self.template_name, {'livro': livro, 'form': form})
-    def post(self, request, id, *args, **kwargs):
-        livro = get_object_or_404(Livro, id=id)
-        form = LivroForm(request.POST, instance=livro)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'As edições foram salvas com sucesso.')
-            return redirect('editar', id=id) # Redirecionar de volta para a página de edição
-        else:
-            messages.error(request, 'Corrija os erros no formulário antes de enviar novamente.')
-            return render(request, self.template_name, {'livro': livro, 'form': form})
+    def get_success_url(self):
+        messages.success(self.request, 'As edições foram salvas com sucesso.')
+        return reverse_lazy('editar', kwargs={'id': self.object.id})

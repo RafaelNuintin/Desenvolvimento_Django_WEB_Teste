@@ -13,7 +13,7 @@ class LivroForm(forms.ModelForm):
         super(LivroForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = Layout(
-            'titulo',
+            'nome',
             'autor',
             'editora',
             'genero',

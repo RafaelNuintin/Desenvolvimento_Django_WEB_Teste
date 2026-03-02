@@ -65,15 +65,21 @@ initial-scale=1.0">
 </tr>
 </thead>
 <tbody>
-{% for livros in livros %}
+{% for livro in livros %}
 <tr>
-<td>{{ livros.nome }}</td>
-<td>{{ livros.autor }}</td>
-<td>{{ livros.editora }}</td>
-<td>{{ livros.genero }} </td>
-<td>{{ livros.preco }}</td>
-<td>{{ livros.data_plub }}</td>
-<td>{{ livros.status }}</td>
+<td>{{ livro.nome }}</td>
+<td>{{ livro.autor }}</td>
+<td>{{ livro.editora }}</td>
+<td>{{ livro.genero }} </td>
+<td>{{ livro.preco }}</td>
+<td>{{ livro.data_pub }}</td>
+<td>
+    {% if livro.status %}
+        <span class="badge badge-success">Disponível</span>
+    {% else %}
+        <span class="badge badge-danger">Indisponível</span>
+    {% endif %}
+</td>
 </tr>
 {% endfor %}
 </tbody>

@@ -5,7 +5,7 @@ from app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('', IndexView.as_view(), name='index'),
     path('livros/', LivrosView.as_view(), name='livros'),
     path('emprestimo/', EmprestimoView.as_view(), name='emprestimo'),
     path('delete/<int:id>/', DeleteLivroView.as_view(), name='delete'),
