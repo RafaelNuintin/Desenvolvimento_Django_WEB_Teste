@@ -5,6 +5,9 @@ from django.views import View
 from django.contrib import messages
 from django.views.generic import UpdateView
 from django.urls import reverse_lazy
+from rest_framework import viewsets
+from .serializers import LivroSerializer, AutorSerializer, GeneroSerializer
+
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
@@ -57,3 +60,16 @@ class EditarLivroView(UpdateView):
     def get_success_url(self):
         messages.success(self.request, 'As edições foram salvas com sucesso.')
         return reverse_lazy('editar', kwargs={'id': self.object.id})
+
+
+class LivroViewSet(viewsets.ModelViewSet):
+    queryset = Livro.objects.all()
+    serializer_class = LivroSerializer
+
+class AutorViewSet(viewsets.ModelViewSet):
+    queryset = Autor.objects.all()
+    serializer_class = AutorSerializer
+
+class GeneroViewSet(viewsets.ModelViewSet):
+    queryset = Genero.objects.all()
+    serializer_class = GeneroSerializer

@@ -2,9 +2,17 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
 from app.views import *
+from rest_framework.routers import DefaultRouter
+from app.views import LivroViewSet
+
+router = DefaultRouter()
+router.register(r'livros', LivroViewSet)
+router.register(r'autores', AutorViewSet)
+router.register(r'generos', GeneroViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
     path('', IndexView.as_view(), name='index'),
     path('livros/', LivrosView.as_view(), name='livros'),
     path('emprestimo/', EmprestimoView.as_view(), name='emprestimo'),
