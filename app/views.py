@@ -63,7 +63,7 @@ class EditarLivroView(UpdateView):
 
 
 class LivroViewSet(viewsets.ModelViewSet):
-    queryset = Livro.objects.all()
+    queryset = Livro.objects.select_related('autor').all()
     serializer_class = LivroSerializer
 
 class AutorViewSet(viewsets.ModelViewSet):
