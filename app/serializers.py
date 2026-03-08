@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import Livro, Autor, Genero, Editora
 
 class AutorSerializer(serializers.ModelSerializer):
+    cidade_nome = serializers.StringRelatedField(source='cidade', read_only=True)
+
     class Meta:
         model = Autor
         fields = '__all__'
