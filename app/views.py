@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.views.generic import UpdateView
 from django.urls import reverse_lazy
 from rest_framework import viewsets
-from .serializers import LivroSerializer, AutorSerializer, GeneroSerializer, EditoraSerializer
+from .serializers import LivroSerializer, AutorSerializer, GeneroSerializer, EditoraSerializer, CidadeSerializer, EmprestimoSerializer, LeitorSerializer
 
 
 class IndexView(View):
@@ -77,3 +77,15 @@ class GeneroViewSet(viewsets.ModelViewSet):
 class EditoraViewSet(viewsets.ModelViewSet):
     queryset = Editora.objects.all()
     serializer_class = EditoraSerializer
+
+class CidadeViewSet(viewsets.ModelViewSet):
+    queryset = Cidade.objects.all()
+    serializer_class = CidadeSerializer
+
+class EmprestimoViewSet(viewsets.ModelViewSet):
+    queryset = Emprestimo.objects.all()
+    serializer_class = EmprestimoSerializer
+
+class LeitorViewSet(viewsets.ModelViewSet):
+    queryset = Leitor.objects.all()
+    serializer_class = LeitorSerializer
