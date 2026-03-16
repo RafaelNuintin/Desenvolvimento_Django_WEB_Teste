@@ -65,6 +65,12 @@ initial-scale=1.0">
 <td>{{ autores.nome }}</td>
 <td>{{ autores.cidade}}</td>
 </tr>
+{% empty %}
+<tr>
+    <td colspan="2" class="text-center">
+        Nenhum autor cadastrado.
+    </td>
+</tr>
 {% endfor %}
 </tbody>
 </table>

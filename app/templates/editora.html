@@ -67,6 +67,12 @@ initial-scale=1.0">
 <td>{{ editoras.site }}</td>
 <td>{{ editoras.cidade }}</td>
 </tr>
+{% empty %}
+<tr>
+    <td colspan="3" class="text-center">
+        Nenhuma editora cadastrada.
+    </td>
+</tr>
 {% endfor %}
 </tbody>
 </table>

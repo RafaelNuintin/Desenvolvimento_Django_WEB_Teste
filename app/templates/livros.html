@@ -81,6 +81,12 @@ initial-scale=1.0">
     {% endif %}
 </td>
 </tr>
+{% empty %}
+<tr>
+    <td colspan="7" class="text-center">
+        Nenhum livro cadastrado.
+    </td>
+</tr>
 {% endfor %}
 </tbody>
 </table>

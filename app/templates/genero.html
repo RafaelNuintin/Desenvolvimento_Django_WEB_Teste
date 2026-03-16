@@ -63,6 +63,12 @@ initial-scale=1.0">
 <tr>
 <td>{{ generos.nome }}</td>
 </tr>
+{% empty %}
+<tr>
+    <td colspan="1" class="text-center">
+        Nenhum gênero cadastrado.
+    </td>
+</tr>
 {% endfor %}
 </tbody>
 </table>

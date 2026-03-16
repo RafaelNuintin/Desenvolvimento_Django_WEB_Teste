@@ -67,6 +67,12 @@ initial-scale=1.0">
 <td>{{ leitores.email }}</td>
 <td>{{ leitores.cpf }}</td>
 </tr>
+{% empty %}
+<tr>
+    <td colspan="3" class="text-center">
+        Nenhum leitor cadastrado.
+    </td>
+</tr>
 {% endfor %}
 </tbody>
 </table>
