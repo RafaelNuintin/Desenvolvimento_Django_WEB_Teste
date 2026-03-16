@@ -10,6 +10,8 @@ class AutorSerializer(serializers.ModelSerializer):
 
 class LivroSerializer(serializers.ModelSerializer):
     autor_nome = serializers.StringRelatedField(source='autor', read_only=True)
+    editora_nome = serializers.StringRelatedField(source='editora', read_only=True)
+    genero_nome = serializers.StringRelatedField(source='genero', read_only=True)
 
     class Meta:
         model = Livro
