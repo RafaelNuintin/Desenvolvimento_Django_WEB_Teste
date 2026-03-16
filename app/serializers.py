@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Livro, Autor, Genero, Editora
+from .models import Livro, Autor, Genero, Editora, Cidade, Emprestimo, Leitor
 
 class AutorSerializer(serializers.ModelSerializer):
     cidade_nome = serializers.StringRelatedField(source='cidade', read_only=True)
@@ -10,6 +10,8 @@ class AutorSerializer(serializers.ModelSerializer):
 
 class LivroSerializer(serializers.ModelSerializer):
     autor_nome = serializers.StringRelatedField(source='autor', read_only=True)
+    editora_nome = serializers.StringRelatedField(source='editora', read_only=True)
+    genero_nome = serializers.StringRelatedField(source='genero', read_only=True)
 
     class Meta:
         model = Livro
@@ -23,4 +25,22 @@ class GeneroSerializer(serializers.ModelSerializer):
 class EditoraSerializer(serializers.ModelSerializer):
     class Meta:
         model = Editora
+        fields = '__all__'
+
+class CidadeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cidade
+        fields = '__all__'
+
+class EmprestimoSerializer(serializers.ModelSerializer):
+    livro_nome = serializers.StringRelatedField(source='livro', read_only=True)
+    leitor_nome = serializers.StringRelatedField(source='leitor', read_only=True)
+    
+    class Meta:
+        model = Emprestimo
+        fields = '__all__'
+
+class LeitorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Leitor
         fields = '__all__'

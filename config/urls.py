@@ -3,12 +3,16 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 from app.views import *
 from rest_framework.routers import DefaultRouter
-from app.views import LivroViewSet
+from app.views import LivroViewSet, AutorViewSet, GeneroViewSet, EditoraViewSet, CidadeViewSet, EmprestimoViewSet, LeitorViewSet
 
 router = DefaultRouter()
 router.register(r'livros', LivroViewSet)
 router.register(r'autores', AutorViewSet)
 router.register(r'generos', GeneroViewSet)
+router.register(r'editoras', EditoraViewSet)
+router.register(r'cidades', CidadeViewSet)
+router.register(r'emprestimos', EmprestimoViewSet)
+router.register(r'leitores', LeitorViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
